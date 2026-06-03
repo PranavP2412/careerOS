@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CareerOSHome from "./components/home.jsx";
+import CareerOSHome from "./components/main.jsx";
 import Predictor from "./components/Predictor.jsx";
 
 export default function App() {
