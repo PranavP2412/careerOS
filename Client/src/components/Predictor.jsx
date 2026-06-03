@@ -754,7 +754,7 @@ export default function Predictor() {
                         💬 Connect with an Expert
                       </a>
                       <a
-  href="https://wa.me/919356605358"
+  href="https://whatsapp.com/channel/0029Vb7r7gF8fewrhrhwGo0U"
   className="inline-flex items-center gap-2 bg-amber-400 text-[#0A1240] text-xs font-extrabold tracking-wide px-5 py-2.5 rounded-full hover:-translate-y-0.5 hover:shadow-lg hover:shadow-amber-400/40 transition-all duration-200"
 >
   <img 
