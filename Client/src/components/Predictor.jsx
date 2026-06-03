@@ -4,7 +4,7 @@ import whatsappIcon from "../assets/icons8-whatsapp.svg";
 // ─── Google Apps Script URL ──────────────────────────────────
 // IMPORTANT: Replace this with your deployed Apps Script URL
 // See the setup guide: google_sheets_setup.md
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzFmC54xR0iQHFn3dX4dWklqBgtKnwEazVs45S4N_LUa6IU1ZI2U1EveGQf6BtvZ7k16Q/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/library/d/1n31i1f4_j3ymHwrhuaYx7V-HvgB6RoUUJONolHa0A1kWQ5uuJt_vXWA4/3";
 
 // ─── Percentile Lookup Data ───────────────────────────────────
 const marksToPercentile = {
