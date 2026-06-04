@@ -4,7 +4,7 @@ import whatsappIcon from "../assets/icons8-whatsapp.svg";
 // ─── Google Apps Script URL ──────────────────────────────────
 // IMPORTANT: Replace this with your deployed Apps Script URL
 // See the setup guide: google_sheets_setup.md
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/library/d/1n31i1f4_j3ymHwrhuaYx7V-HvgB6RoUUJONolHa0A1kWQ5uuJt_vXWA4/3";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyiG20gui8tWHfWkMesIPeiRJL67-uFxzlZ33-yfvOERghDMZM1vjSHv6YfMJiv2H-mdA/exec";
 
 // ─── Percentile Lookup Data ───────────────────────────────────
 const marksToPercentile = {
@@ -553,7 +553,7 @@ export default function Predictor() {
             {/* Stats Cards */}
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3">
               {[
-                { icon: "👥", value: "100+", label: "Students Guided", suffix: "+" },
+                { icon: "👥", value: "250+", label: "Students Guided", suffix: "+" },
                 { icon: "🎯", value: "99.9", label: "Accuracy Rate", suffix: "%" },
                 { icon: "📊", value: "3", label: "Difficulty Levels", suffix: "" },
               ].map((s, i) => (
@@ -748,11 +748,11 @@ export default function Predictor() {
                     </p>
                     <div className="mt-4 flex flex-wrap justify-center gap-3">
                       <a
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSeiuHkhunyX7lcPe_ms8UKJ1waK8AxqropYV9qK60BoBHsoKw/viewform?usp=sharing&ouid=108883885572194550504"
-                        className="bg-amber-400 text-[#0A1240] text-xs font-extrabold tracking-wide px-5 py-2.5 rounded-full hover:-translate-y-0.5 hover:shadow-lg hover:shadow-amber-400/40 transition-all duration-200"
-                      >
-                        💬 Connect with an Expert
-                      </a>
+  href="https://docs.google.com/forms/d/e/1FAIpQLSeiuHkhunyX7lcPe_ms8UKJ1waK8AxqropYV9qK60BoBHsoKw/viewform?usp=sharing&ouid=108883885572194550504"
+  className="bg-amber-400 text-[#0A1240] text-base font-extrabold tracking-wide px-8 py-3.5 rounded-full hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-400/40 transition-all duration-200"
+>
+  💬 Book your personal session
+</a>
                       <a
   href="https://whatsapp.com/channel/0029Vb7r7gF8fewrhrhwGo0U"
   className="inline-flex items-center gap-2 bg-amber-400 text-[#0A1240] text-xs font-extrabold tracking-wide px-5 py-2.5 rounded-full hover:-translate-y-0.5 hover:shadow-lg hover:shadow-amber-400/40 transition-all duration-200"

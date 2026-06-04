@@ -1,9 +1,8 @@
 import { useEffect } from "react";
-import sanketImg from "../assets/WhatsApp Image 2026-06-03 at 5.18.12 PM.jpeg"
-import aryaImg from "../assets/WhatsApp Image 2026-06-03 at 5.17.44 PM.jpeg"
-import omImg from "../assets/WhatsApp Image 2026-06-03 at 5.12.18 PM.jpeg"  
+import arya from "../assets/WhatsApp Image 2026-06-03 at 5.17.44 PM.jpeg"
+import sanket from "../assets/WhatsApp Image 2026-06-03 at 5.18.12 PM.jpeg"
+import om from "../assets/WhatsApp Image 2026-06-03 at 5.12.18 PM.jpeg"
 
-// --- DATA ---
 const services = [
   { icon: "🎯", title: "College & Branch Selection" },
   { icon: "📝", title: "CAP Round Guidance" },
@@ -32,28 +31,26 @@ const whyPoints = [
 ];
 
 const mentors = [
-    {
-    name: "Sanket",
-    score: "MHTCET 97.63 • JEE 93.98",
-    college: "VJTI Mumbai – Electrical",
-    img: sanketImg,
-  },
   {
     name: "Arya",
     score: "MHTCET 96.89 • 2023",
     college: "VJTI Mumbai – EXTC",
-    img: aryaImg,
+    img: arya
+  },
+  {
+    name: "Sanket",
+    score: "MHTCET 97.63 • JEE 93.98",
+    college: "VJTI Mumbai – Electrical",
+    img: sanket,
   },
   {
     name: "Om",
     score: "MHTCET 98.49 • 2023",
     college: "Mumbai – Mechanical",
-    img: omImg,
+    img: om,
   },
 ];
 
-
-// --- SCROLL REVEAL HOOK ---
 function useReveal() {
   useEffect(() => {
     const els = document.querySelectorAll(".reveal");
@@ -79,7 +76,6 @@ export default function CareerOSHome() {
   return (
     <div className="font-sans bg-slate-50 text-slate-900 overflow-x-hidden">
 
-      {/* ── GOOGLE FONTS ── */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Manrope', sans-serif; }
@@ -90,22 +86,19 @@ export default function CareerOSHome() {
       `}</style>
 
       {/* ════════════════════════════════════════
-          HERO — fits exactly in viewport
+          HERO
       ════════════════════════════════════════ */}
-      <section className="relative h-screen flex flex-col overflow-hidden">
-        {/* BG image */}
+      <section className="relative flex flex-col overflow-hidden" style={{ minHeight: "100svh" }}>
+        {/* BG */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&q=80')" }}
         />
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0A1240]/97 via-[#0D1B6E]/92 to-[#1A3BAA]/80" />
-        {/* Dot pattern */}
         <div
           className="absolute inset-0 opacity-30"
           style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)", backgroundSize: "32px 32px" }}
         />
-        {/* Glow blob */}
         <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-amber-400/10 blur-3xl pointer-events-none" />
 
         {/* NAV */}
@@ -117,53 +110,49 @@ export default function CareerOSHome() {
             href="/predict"
             className="bg-amber-400 text-[#0A1240] text-xs font-extrabold tracking-wide px-5 py-2.5 rounded-full hover:-translate-y-0.5 hover:shadow-lg hover:shadow-amber-400/40 transition-all duration-200"
           >
-            Predict My Rank →
+            Predict My Percentile →
           </a>
         </nav>
 
-        {/* HERO CONTENT — flex-1 so it fills remaining height, justify-between to spread content */}
-        <div className="relative z-10 flex-1 flex flex-col justify-between px-6 md:px-12 py-4 md:py-6 max-w-5xl mx-auto w-full min-h-0">
+        {/* CONTENT — justify-center on all sizes, content flows naturally with gap */}
+        <div className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-12 pb-10 pt-4 max-w-5xl mx-auto w-full gap-4 md:gap-5">
 
-          {/* Top: tag + headline + description + buttons */}
-          <div>
-            <span className="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/30 text-amber-400 text-[10px] md:text-[11px] font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-3 md:mb-4 w-fit">
-              🎓 By Rankers · For Future Rankers
-            </span>
+          <span className="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/30 text-amber-400 text-[10px] md:text-[11px] font-bold tracking-widest uppercase px-4 py-1.5 rounded-full w-fit">
+            🎓 By Rankers · For Future Rankers
+          </span>
 
-            <h1 className="font-display text-[clamp(2.6rem,7.5vw,6.5rem)] text-white leading-[0.92] tracking-wide mb-3">
-              DON'T LET<br />
-              <span className="text-amber-400">CONFUSION</span><br />
-              DECIDE YOUR<br />
-              NEXT FOUR YEARS
-            </h1>
+          <h1 className="font-display text-[clamp(2.8rem,9vw,6.5rem)] text-white leading-[0.92] tracking-wide">
+            DON'T LET<br />
+            <span className="text-amber-400">CONFUSION</span><br />
+            DECIDE YOUR<br />
+            NEXT FOUR YEARS
+          </h1>
 
-            <p className="text-white/65 text-sm md:text-base max-w-lg leading-relaxed mb-5 font-medium">
-              Guided by top JEE &amp; MHT-CET rankers. Navigate Maharashtra engineering
-              admissions with clarity, confidence, and a real strategy.
-            </p>
+          <p className="text-white/65 text-sm md:text-base max-w-lg leading-relaxed font-medium">
+            Guided by top JEE &amp; MHT-CET rankers. Navigate Maharashtra engineering
+            admissions with clarity, confidence, and a real strategy.
+          </p>
 
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="/predict"
-                className="bg-amber-400 text-[#0A1240] font-extrabold text-sm md:text-base px-6 md:px-8 py-3 md:py-3.5 rounded-full hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-400/40 transition-all duration-200 inline-flex items-center gap-2"
-              >
-                🎯 Predict My Rank
-              </a>
-              <a
-                href="https://wa.me/919356605358"
-                className="text-white font-bold text-sm md:text-base px-6 md:px-8 py-3 md:py-3.5 rounded-full border-2 border-white/30 hover:border-white/70 hover:bg-white/5 transition-all duration-200 inline-block"
-              >
-                Talk to a Mentor
-              </a>
-            </div>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="/predict"
+              className="bg-amber-400 text-[#0A1240] font-extrabold text-sm md:text-base px-6 md:px-8 py-3 md:py-3.5 rounded-full hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-400/40 transition-all duration-200 inline-flex items-center gap-2"
+            >
+              🎯 Predict My Percentile
+            </a>
+            <a
+              href="#contact"
+              className="text-white font-bold text-sm md:text-base px-6 md:px-8 py-3 md:py-3.5 rounded-full border-2 border-white/30 hover:border-white/70 hover:bg-white/5 transition-all duration-200 inline-block"
+            >
+              Talk to a Mentor
+            </a>
           </div>
 
-          {/* Bottom: stats pinned to bottom of hero */}
-          <div className="flex flex-wrap gap-6 md:gap-10 pt-4 border-t border-white/10 w-full max-w-lg">
+          {/* Stats — right below buttons, no floating */}
+          <div className="flex flex-wrap gap-6 md:gap-10 pt-5 border-t border-white/10 w-full max-w-lg mt-2">
             {[
-              { num: "100+", label: "Students Mentored" },
+              { num: "250+", label: "Students Mentored" },
               { num: "2+",   label: "Years Experience" },
-              { num: "3",    label: "Expert Mentors" },
               { num: "24/7", label: "Support" },
             ].map((s, i) => (
               <div key={i} className="flex flex-col gap-0.5">
@@ -182,9 +171,7 @@ export default function CareerOSHome() {
       <section className="bg-white py-20 px-6 md:px-12">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-
-            {/* Image */}
-            <div className="reveal opacity-0 translate-y-8 relative rounded-2xl overflow-hidden h-[400px] md:h-[460px] shadow-2xl shadow-blue-900/20">
+            <div className="reveal opacity-0 translate-y-8 relative rounded-2xl overflow-hidden h-[380px] md:h-[460px] shadow-2xl shadow-blue-900/20">
               <img
                 src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80"
                 alt="Confused student"
@@ -197,7 +184,6 @@ export default function CareerOSHome() {
               </div>
             </div>
 
-            {/* Text */}
             <div>
               <div className="reveal opacity-0 translate-y-8">
                 <p className="text-[11px] font-extrabold tracking-[3px] uppercase text-blue-700 mb-3">You're Not Alone</p>
@@ -234,16 +220,12 @@ export default function CareerOSHome() {
         className="relative py-20 px-6 md:px-12 overflow-hidden"
         style={{ background: "linear-gradient(135deg, #0A1240 0%, #0D1B6E 55%, #1A3BAA 100%)" }}
       >
-        {/* Dot texture */}
         <div
           className="absolute inset-0 opacity-30 pointer-events-none"
           style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "28px 28px" }}
         />
-
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-
-            {/* Left: text + grid */}
             <div>
               <div className="reveal opacity-0 translate-y-8">
                 <p className="text-[11px] font-extrabold tracking-[3px] uppercase text-amber-400 mb-3">What We Offer</p>
@@ -267,8 +249,6 @@ export default function CareerOSHome() {
                 ))}
               </div>
             </div>
-
-            {/* Right: images */}
             <div className="reveal opacity-0 translate-y-8 flex flex-col gap-3">
               <div className="relative rounded-2xl overflow-hidden h-56">
                 <img
@@ -282,18 +262,10 @@ export default function CareerOSHome() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div className="rounded-xl overflow-hidden h-36">
-                  <img
-                    src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=500&q=80"
-                    alt="One-on-one mentorship"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=500&q=80" alt="Mentorship" className="w-full h-full object-cover" />
                 </div>
                 <div className="rounded-xl overflow-hidden h-36">
-                  <img
-                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&q=80"
-                    alt="College prediction"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&q=80" alt="Prediction" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
@@ -302,13 +274,11 @@ export default function CareerOSHome() {
       </section>
 
       {/* ════════════════════════════════════════
-          WHY — RIGHT COLLEGE
+          WHY
       ════════════════════════════════════════ */}
       <section className="bg-slate-50 py-20 px-6 md:px-12">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-
-            {/* Text */}
             <div>
               <div className="reveal opacity-0 translate-y-8">
                 <p className="text-[11px] font-extrabold tracking-[3px] uppercase text-blue-700 mb-3">Smart College Choice</p>
@@ -317,8 +287,7 @@ export default function CareerOSHome() {
                   <span className="text-blue-600">HIGHEST CUTOFF.</span>
                 </h2>
                 <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
-                  We help you look beyond percentiles to what truly matters for
-                  your four years and your career.
+                  We help you look beyond percentiles to what truly matters for your four years and your career.
                 </p>
               </div>
               <div className="flex flex-col gap-3 mt-6">
@@ -338,15 +307,9 @@ export default function CareerOSHome() {
                 ))}
               </div>
             </div>
-
-            {/* Images */}
             <div className="reveal opacity-0 translate-y-8 flex flex-col gap-3">
               <div className="relative rounded-2xl overflow-hidden h-64 shadow-xl shadow-blue-900/15">
-                <img
-                  src="https://images.unsplash.com/photo-1562774053-701939374585?w=900&q=80"
-                  alt="Engineering campus"
-                  className="w-full h-full object-cover"
-                />
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=900&q=80" alt="Campus" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A1240]/80 to-transparent flex flex-col justify-end p-5">
                   <p className="font-display text-2xl text-white leading-tight">
                     FOUR YEARS. <span className="text-amber-400">ONE DECISION.</span>
@@ -356,18 +319,10 @@ export default function CareerOSHome() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div className="rounded-xl overflow-hidden h-36">
-                  <img
-                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&q=80"
-                    alt="Student on laptop"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&q=80" alt="Student" className="w-full h-full object-cover" />
                 </div>
                 <div className="rounded-xl overflow-hidden h-36">
-                  <img
-                    src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&q=80"
-                    alt="Group study"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&q=80" alt="Study" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
@@ -391,7 +346,6 @@ export default function CareerOSHome() {
               mentorship experience and 100+ students guided.
             </p>
           </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {mentors.map((m, i) => (
   <div
@@ -399,24 +353,24 @@ export default function CareerOSHome() {
     className="reveal opacity-0 translate-y-8 group rounded-2xl overflow-hidden border border-blue-50 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-900/12 transition-all duration-300"
     style={{ transitionDelay: `${i * 100}ms` }}
   >
-    {/* Top bar accent */}
     <div className="h-1.5 bg-gradient-to-r from-[#0D1B6E] to-[#1A3BAA]" />
     
-    {/* Photo Container - Increased height from h-52 to h-64 */}
-    <div className="relative h-64 overflow-hidden">
-      <img
-        src={m.img}
-        alt={m.name}
-        // Added object-top just in case the original photo has too much space at the bottom
-        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-400"
+    {/* 1. Increased height from h-52 to h-64 */}
+    <div className="relative h-64 overflow-hidden"> 
+      
+      {/* 2. Added object-top right after object-cover */}
+      <img 
+        src={m.img} 
+        alt={m.name} 
+        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
       />
+      
       <div className="absolute inset-0 bg-gradient-to-t from-[#0A1240]/60 to-transparent" />
       <span className="absolute bottom-3 left-3 bg-amber-400 text-[#0A1240] text-[10px] font-extrabold tracking-wide px-3 py-1 rounded-full">
         {m.score}
       </span>
     </div>
     
-    {/* Body */}
     <div className="px-5 py-5">
       <p className="font-display text-[2rem] text-[#0D1B6E] tracking-widest leading-none mb-1">{m.name}</p>
       <p className="text-sm text-slate-500 font-semibold leading-snug">{m.college}</p>
@@ -427,12 +381,10 @@ export default function CareerOSHome() {
         </div>
       </section>
 
-
       {/* ════════════════════════════════════════
           CTA
       ════════════════════════════════════════ */}
       <section id="contact" className="relative py-20 px-6 md:px-12 overflow-hidden text-center">
-        {/* BG */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1400&q=80')" }}
@@ -442,7 +394,6 @@ export default function CareerOSHome() {
           className="absolute inset-0 opacity-20 pointer-events-none"
           style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)", backgroundSize: "28px 28px" }}
         />
-
         <div className="relative z-10 max-w-2xl mx-auto">
           <div className="reveal opacity-0 translate-y-8">
             <p className="text-[11px] font-extrabold tracking-[3px] uppercase text-amber-400 mb-3">Book Your Session</p>
@@ -459,7 +410,6 @@ export default function CareerOSHome() {
             >
               🎯 Predict My Rank First
             </a>
-
             <div className="flex flex-wrap justify-center gap-3 mt-8">
               {[
                 { icon: "📞", label: "Sanket: 9356605358", href: "https://wa.me/919356605358" },
