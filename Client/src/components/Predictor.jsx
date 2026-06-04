@@ -68,6 +68,17 @@ const examDates = [
   "April 20, 2026",
 ];
 
+const examDates2 = [
+  "May 12, 2026",
+  "May 13, 2026",
+  "May 14, 2026",
+  "May 15, 2026",
+  "May 18, 2026",
+  "May 19, 2026",
+  "May 20, 2026",
+  "May 21, 2026",
+];
+
 const difficultySchedule = [
   { date: "April 11, 2026", morning: "Easy",     afternoon: "Moderate" },
   { date: "April 13, 2026", morning: "Moderate",  afternoon: "Difficult" },
@@ -77,6 +88,17 @@ const difficultySchedule = [
   { date: "April 18, 2026", morning: "Moderate",  afternoon: "Moderate" },
   { date: "April 19, 2026", morning: "Moderate",  afternoon: "Difficult" },
   { date: "April 20, 2026", morning: "Moderate",  afternoon: "Easy" },
+];
+
+const difficultySchedule2 = [
+  { date: "May 12, 2026",  morning: "Difficult",  afternoon: "Difficult",  morningNote: "High calculation peak", afternoonNote: "Slightly harder than S1" },
+  { date: "May 13, 2026",  morning: "Moderate",   afternoon: "Moderate" },
+  { date: "May 14, 2026",  morning: "Moderate",   afternoon: "Moderate" },
+  { date: "May 15, 2026",  morning: "Moderate",   afternoon: "Moderate to Slightly Above Moderate" },
+  { date: "May 18, 2026",  morning: "Moderate",   afternoon: "Moderate to Tough" },
+  { date: "May 19, 2026",  morning: "Moderate",   afternoon: "Difficult", afternoonNote: "Tricky Physics" },
+  { date: "May 20, 2026",  morning: "Moderate",   afternoon: "Moderate",  afternoonNote: "Calculative" },
+  { date: "May 21, 2026",  morning: "Moderate",   afternoon: "Moderate" },
 ];
 
 const faqData = [
@@ -170,15 +192,31 @@ function AnimatedNumber({ value, duration = 1200 }) {
 }
 
 // ─── Difficulty Badge ──────────────────────────────────────
-function DiffBadge({ level }) {
+function DiffBadge({ level, note }) {
+  // Map complex labels to a base color category
+  const getColorKey = (lvl) => {
+    if (!lvl) return "Moderate";
+    const lower = lvl.toLowerCase();
+    if (lower.includes("difficult") || lower.includes("tough")) return "Difficult";
+    if (lower === "easy") return "Easy";
+    return "Moderate";
+  };
   const colors = {
     Easy: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
     Moderate: "bg-amber-400/20 text-amber-300 border-amber-400/30",
     Difficult: "bg-red-500/20 text-red-300 border-red-500/30",
   };
+  const colorKey = getColorKey(level);
   return (
-    <span className={`inline-block rounded-full border px-2.5 py-0.5 text-[10px] font-extrabold tracking-wide uppercase ${colors[level]}`}>
-      {level}
+    <span className="inline-flex flex-col items-start gap-0.5">
+      <span className={`inline-block rounded-full border px-2.5 py-0.5 text-[10px] font-extrabold tracking-wide uppercase ${colors[colorKey]}`}>
+        {level}
+      </span>
+      {note && (
+        <span className="text-[9px] text-white/35 font-medium leading-tight pl-1">
+          ({note})
+        </span>
+      )}
     </span>
   );
 }
@@ -371,6 +409,7 @@ export default function Predictor() {
   const [difficulty, setDifficulty] = useState("");
   const [result, setResult] = useState(null);
   const [tableTab, setTableTab] = useState("moderate");
+  const [scheduleTab, setScheduleTab] = useState("attempt1");
   const [openFaq, setOpenFaq] = useState(null);
 
   // modal & student state
@@ -605,7 +644,7 @@ export default function Predictor() {
                       <button
                         key={a}
                         type="button"
-                        onClick={() => setAttempt(a)}
+                        onClick={() => { setAttempt(a); setExamDate(""); }}
                         className={`rounded-xl border px-4 py-3 text-sm font-bold transition-all ${
                           attempt === a
                             ? "border-amber-400 bg-amber-400/15 text-amber-400 shadow-sm ring-1 ring-amber-400/50"
@@ -632,7 +671,7 @@ export default function Predictor() {
                         className="w-full appearance-none rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 pr-10 text-sm font-semibold text-white focus:border-amber-400/50 focus:outline-none focus:ring-4 focus:ring-amber-400/10 transition-all"
                       >
                         <option value="" disabled className="text-gray-500 bg-[#0A1240]">Select your exam date</option>
-                        {examDates.map((d) => (
+                        {(attempt === "1st" ? examDates : examDates2).map((d) => (
                           <option key={d} value={d} className="text-white bg-[#0A1240]">{d}</option>
                         ))}
                       </select>
@@ -790,24 +829,41 @@ export default function Predictor() {
 
           {/* ── Difficulty Schedule ── */}
           <div className="reveal opacity-0 translate-y-8 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-xl flex flex-col h-full">
-            <div className="border-b border-white/5 bg-white/[0.03] px-5 py-3">
-              <p className="text-sm font-bold text-white/80">📅 MHT CET 2026 — Difficulty Schedule (PCM)</p>
+            <div className="border-b border-white/5 bg-white/[0.03] px-4 sm:px-5 py-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <p className="text-sm font-bold text-white/80">📅 Difficulty Schedule (PCM)</p>
+                <div className="flex rounded-lg bg-white/[0.05] p-1 shrink-0 self-start sm:self-auto">
+                  {[{ key: "attempt1", label: "Attempt 1" }, { key: "attempt2", label: "Attempt 2" }].map((tab) => (
+                    <button
+                      key={tab.key}
+                      onClick={() => setScheduleTab(tab.key)}
+                      className={`rounded-md px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wide transition-all ${
+                        scheduleTab === tab.key
+                          ? "bg-amber-400/15 text-amber-400 shadow-sm ring-1 ring-amber-400/30"
+                          : "text-white/40 hover:text-white/60"
+                      }`}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
             <div className="overflow-x-auto flex-1">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-white/5 bg-amber-400/5">
-                    <th className="px-5 py-3 text-left text-[10px] font-extrabold uppercase tracking-widest text-white/40">Date</th>
-                    <th className="px-5 py-3 text-left text-[10px] font-extrabold uppercase tracking-widest text-white/40">🌅 Morning</th>
-                    <th className="px-5 py-3 text-left text-[10px] font-extrabold uppercase tracking-widest text-white/40">🌇 Afternoon</th>
+                    <th className="px-3 sm:px-5 py-3 text-left text-[10px] font-extrabold uppercase tracking-widest text-white/40">Date</th>
+                    <th className="px-3 sm:px-5 py-3 text-left text-[10px] font-extrabold uppercase tracking-widest text-white/40">🌅 Morning (S1)</th>
+                    <th className="px-3 sm:px-5 py-3 text-left text-[10px] font-extrabold uppercase tracking-widest text-white/40">🌇 Afternoon (S2)</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {difficultySchedule.map((row, i) => (
+                  {(scheduleTab === "attempt1" ? difficultySchedule : difficultySchedule2).map((row, i) => (
                     <tr key={i} className={`border-b border-white/[0.03] transition-colors hover:bg-white/[0.04] ${i % 2 === 0 ? "" : "bg-white/[0.015]"}`}>
-                      <td className="px-5 py-3 font-semibold text-white/70 whitespace-nowrap">{row.date}</td>
-                      <td className="px-5 py-3 whitespace-nowrap"><DiffBadge level={row.morning} /></td>
-                      <td className="px-5 py-3 whitespace-nowrap"><DiffBadge level={row.afternoon} /></td>
+                      <td className="px-3 sm:px-5 py-3 font-semibold text-white/70 whitespace-nowrap text-xs sm:text-sm">{row.date}</td>
+                      <td className="px-3 sm:px-5 py-3"><DiffBadge level={row.morning} note={row.morningNote} /></td>
+                      <td className="px-3 sm:px-5 py-3"><DiffBadge level={row.afternoon} note={row.afternoonNote} /></td>
                     </tr>
                   ))}
                 </tbody>
