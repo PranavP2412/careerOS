@@ -115,7 +115,7 @@ export default function CareerOSHome() {
         </nav>
 
         {/* CONTENT — justify-center on all sizes, content flows naturally with gap */}
-        <div className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-12 pb-10 pt-4 max-w-5xl mx-auto w-full gap-4 md:gap-5">
+        <div className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-12 pb-6 pt-2 max-w-5xl mx-auto w-full gap-3 md:gap-4">
 
           <span className="inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/30 text-amber-400 text-[10px] md:text-[11px] font-bold tracking-widest uppercase px-4 py-1.5 rounded-full w-fit">
             🎓 By Rankers · For Future Rankers
@@ -149,7 +149,7 @@ export default function CareerOSHome() {
           </div>
 
           {/* Stats — right below buttons, no floating */}
-          <div className="flex flex-wrap gap-6 md:gap-10 pt-5 border-t border-white/10 w-full max-w-lg mt-2">
+          <div className="flex flex-wrap gap-6 md:gap-10 pt-3 border-t border-white/10 w-full max-w-lg mt-1">
             {[
               { num: "250+", label: "Students Mentored" },
               { num: "2+",   label: "Years Experience" },

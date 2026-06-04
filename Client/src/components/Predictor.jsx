@@ -4,7 +4,6 @@ import whatsappIcon from "../assets/icons8-whatsapp.svg";
 // ─── Google Apps Script URL ──────────────────────────────────
 // IMPORTANT: Replace this with your deployed Apps Script URL
 // See the setup guide: google_sheets_setup.md
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyiG20gui8tWHfWkMesIPeiRJL67-uFxzlZ33-yfvOERghDMZM1vjSHv6YfMJiv2H-mdA/exec";
 
 // ─── Percentile Lookup Data ───────────────────────────────────
 const marksToPercentile = {
@@ -124,21 +123,25 @@ function saveStudent(student) {
 
 // ─── Google Sheets helper ────────────────────────────────────
 // ─── Google Sheets helper ────────────────────────────────────
+// ─── Proxy Sheets helper (Ad-blocker Proof) ──────────────────
 async function sendToGoogleSheet(data) {
   try {
-    // Convert the data object into URL query parameters
     const params = new URLSearchParams(data).toString();
-    const requestUrl = `${GOOGLE_SCRIPT_URL}?${params}`;
+    
+    // Instead of hitting Google, we hit our secure Netlify backend
+    const requestUrl = `/.netlify/functions/saveData?${params}`;
 
-    // Send a GET request. 'no-cors' works perfectly for this method.
-    await fetch(requestUrl, {
+    // Standard GET request (no need for 'no-cors' mode anymore!)
+    const response = await fetch(requestUrl, {
       method: "GET",
-      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
     });
+    
+    if (!response.ok) throw new Error("Network response was not ok");
     
     return true;
   } catch (err) {
-    console.error("Failed to save to Google Sheet:", err);
+    console.error("Failed to save via Proxy:", err);
     return false;
   }
 }
