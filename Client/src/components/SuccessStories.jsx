@@ -12,7 +12,7 @@ const students = [
   {
     name: "Purva Kohat",
     percentile: "97.89",
-    college: "VJTI Mumbai – Computer Engineering",
+    college: "ICT - Chemical Engineering",
     img: poorva,
   },
   {
