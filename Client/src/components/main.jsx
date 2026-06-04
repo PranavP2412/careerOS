@@ -180,7 +180,7 @@ export default function CareerOSHome() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A1240]/70 to-transparent" />
               <div className="absolute bottom-5 left-5 bg-[#0A1240]/80 backdrop-blur-sm border border-amber-400/20 rounded-xl px-4 py-3">
-                <p className="font-display text-3xl text-amber-400 leading-none">100+</p>
+                <p className="font-display text-3xl text-amber-400 leading-none">250+</p>
                 <p className="text-[11px] text-white/60 font-semibold tracking-wide uppercase mt-0.5">PCM Students Guided</p>
               </div>
             </div>
@@ -414,7 +414,7 @@ export default function CareerOSHome() {
               href="/predict"
               className="bg-amber-400 text-[#0A1240] font-extrabold text-base px-9 py-4 rounded-full inline-flex items-center gap-2 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-400/40 transition-all duration-200"
             >
-              🎯 Predict My Rank First
+              🎯 Predict My Percentile First
             </a>
             <div className="flex flex-wrap justify-center gap-3 mt-8">
               {[
