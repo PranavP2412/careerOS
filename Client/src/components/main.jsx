@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import arya from "../assets/WhatsApp Image 2026-06-03 at 5.17.44 PM.jpeg"
 import sanket from "../assets/WhatsApp Image 2026-06-03 at 5.18.12 PM.jpeg"
 import om from "../assets/WhatsApp Image 2026-06-03 at 5.12.18 PM.jpeg"
+import SuccessStories from "./SuccessStories.jsx"
 
 const services = [
   { icon: "🎯", title: "College & Branch Selection" },
@@ -380,6 +381,11 @@ export default function CareerOSHome() {
           </div>
         </div>
       </section>
+
+      {/* ════════════════════════════════════════
+          SUCCESS STORIES
+      ════════════════════════════════════════ */}
+      <SuccessStories />
 
       {/* ════════════════════════════════════════
           CTA
